@@ -1,0 +1,8 @@
+services:
+  haProxy:
+    image:
+  jolokia_1:
+    image: jolokia
+  jolokia_2:
+    image: jolokia
+
