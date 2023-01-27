@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
 @Profile("!ssl")
 public class HelloController {
@@ -17,8 +20,9 @@ public class HelloController {
     private String welcomeMessage = "hello world";
 
     @RequestMapping(value="hello", method=RequestMethod.GET)
-    public String sayHello() {
-        return "hello World, i rune with profile: " + profile;
+    public String sayHello() throws UnknownHostException {
+        String ip = InetAddress.getLocalHost().getHostAddress();
+        return String.format("%s, i run with profile: %s, and IP: %s", welcomeMessage, profile, ip);
     }
 
     @RequestMapping(value="hello", method=RequestMethod.POST)
