@@ -1,3 +1,1 @@
-# JMX for Informatica company
-
-# Informatica
+# JMX PoC
