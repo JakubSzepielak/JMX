@@ -1,0 +1,53 @@
+services:
+  haproxy:
+    image: ha_proxy_jolokia
+    build: ./haproxy
+    restart: always
+    ports:
+      - 80:80
+      - 1936:1936
+    networks:
+      - spring-network
+
+#  plain_jmx_ssl_1:
+#    build: .
+#    ports:
+#      - 8081:8443
+#      - 5010:5000
+#      - 5011:5001
+#    environment:
+#      - spring_profiles_active=ssl
+#
+#  plain_jmx_ssl_2:
+#    build: .
+#    ports:
+#      - 8082:8443
+#      - 5020:5000
+#      - 5021:5001
+#    environment:
+#      - spring_profiles_active=ssl
+
+  plain_jmx_no_ssl_1:
+    image: plain_jmx_no_ssl
+    build: .
+    restart: always
+    ports:
+      - 8081:8080
+      - 5001:5000
+      - 5051:5001
+    networks:
+      - spring-network
+
+  plain_jmx_no_ssl_2:
+    image: plain_jmx_no_ssl
+    build: .
+    restart: always
+    ports:
+      - 8082:8080
+      - 5002:5000
+      - 5052:5001
+    networks:
+      - spring-network
+
+networks:
+  spring-network:
