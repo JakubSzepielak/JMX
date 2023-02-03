@@ -1,7 +1,7 @@
 services:
   haproxy:
     image: ha_proxy_jolokia
-    build: ./haproxy
+    build: ../haproxy
     restart: always
     ports:
       - 80:80
@@ -9,23 +9,14 @@ services:
     networks:
       - spring-network
 
-#  jolokia_ssl_1:
-#    build: .
-#    ports:
-#      - 8081:8443
-#      - 5010:5000
-#      - 5011:5001
-#    environment:
-#      - spring_profiles_active=ssl
-#
-#  jolokia_ssl_2:
-#    build: .
-#    ports:
-#      - 8082:8443
-#      - 5020:5000
-#      - 5021:5001
-#    environment:
-#      - spring_profiles_active=ssl
+  springBootAdmin:
+    image: adultswim/springbootadmin
+    build: ../springbootadmin
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - spring-network
 
   jolokia_no_ssl_1:
     image: jolokia-jolokia_no_ssl

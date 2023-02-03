@@ -11,6 +11,7 @@
     <modules>
         <module>jolokia</module>
         <module>plain</module>
+        <module>springbootadmin</module>
     </modules>
 
 </project>
